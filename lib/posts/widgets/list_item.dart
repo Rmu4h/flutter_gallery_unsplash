@@ -22,7 +22,7 @@ class PostListItem extends StatelessWidget {
             IconButton(
               icon: FadeInImage.assetNetwork(
                 placeholder: 'assets/image/spinner.gif',
-                image: post.urls?['full'],
+                image: post.urls['full'],
               ),
               iconSize: 100,
               onPressed: () {
@@ -30,8 +30,8 @@ class PostListItem extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => PostPage(
-                          post: post,
-                        )));
+                              post: post,
+                            )));
               },
             ),
             Expanded(
@@ -50,21 +50,21 @@ class PostListItem extends StatelessWidget {
         subtitle: Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
           child: Container(
-              padding: const EdgeInsets.all(5),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: const Color(0xFF4643DF),
-              ),
-              child: Text(
-                '${post.user?['name']}',
-                style: GoogleFonts.alike(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                ),
+            padding: const EdgeInsets.all(5),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: const Color(0xFF4643DF),
+            ),
+            child: Text(
+              'Author - ${post.user['name']}',
+              style: GoogleFonts.alike(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
               ),
             ),
+          ),
         ),
         dense: true,
         tileColor: const Color(0xFF1C1640),

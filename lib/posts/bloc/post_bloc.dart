@@ -10,7 +10,6 @@ import 'package:stream_transform/stream_transform.dart';
 
 import '../models/post.dart';
 
-
 const throttleDuration = Duration(milliseconds: 100);
 
 EventTransformer<E> throttleDroppable<E>(Duration duration) {
@@ -19,7 +18,7 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
   };
 }
 
-class PostBloc extends Bloc<PostEvent, PostState>{
+class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc({required this.httpClient}) : super(const PostState()) {
     //register on<MovieFetched> event
     on<PostFetched>(
@@ -30,9 +29,10 @@ class PostBloc extends Bloc<PostEvent, PostState>{
 
   final http.Client httpClient;
 
-  Future<void> _onPostFetched(PostFetched event, Emitter<PostState> emit) async {
-    if(state.hasReachedMax) return;
-    try{
+  Future<void> _onPostFetched(
+      PostFetched event, Emitter<PostState> emit) async {
+    if (state.hasReachedMax) return;
+    try {
       if (state.status == PostStatus.initial) {
         final posts = await _fetchPosts();
 
@@ -47,27 +47,25 @@ class PostBloc extends Bloc<PostEvent, PostState>{
       posts.isEmpty
           ? emit(state.copyWith(hasReachedMax: true))
           : emit(
-        state.copyWith(
-          status: PostStatus.success,
-          posts: List.of(state.posts)..addAll(posts),
-          hasReachedMax: false,
-        ),
-      );
+              state.copyWith(
+                status: PostStatus.success,
+                posts: List.of(state.posts)..addAll(posts),
+                hasReachedMax: false,
+              ),
+            );
     } catch (_) {
       emit(state.copyWith(status: PostStatus.failure));
     }
   }
 
   Future<List<Post>> _fetchPosts([int startIndex = 0]) async {
-    final response = await httpClient.get(Uri.parse('https://api.unsplash.com/photos/?client_id=ab3411e4ac868c2646c0ed488dfd919ef612b04c264f3374c97fff98ed253dc9'));
-    if(response.statusCode == 200) {
-      print('200 work');
+    final response = await httpClient.get(Uri.parse(
+        'https://api.unsplash.com/photos/?client_id=ab3411e4ac868c2646c0ed488dfd919ef612b04c264f3374c97fff98ed253dc9'));
+    if (response.statusCode == 200) {
       final body = json.decode(response.body) as List;
-      print('work ${body} work');
 
       return body.map((dynamic json) {
         final map = json as Map;
-        print('${map} map work');
 
         return Post(
           id: map['id'] as String,

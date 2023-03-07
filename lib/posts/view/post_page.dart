@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../models/post.dart';
 
@@ -18,10 +17,10 @@ class PostPage extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Color(0xFF1B1934),
-                    Color(0xFF181A20),
-                    Color(0xFF1B1934)
-                  ])),
+                Color(0xFF1B1934),
+                Color(0xFF181A20),
+                Color(0xFF1B1934)
+              ])),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(10, 22, 10, 22),
             child: Column(
@@ -45,7 +44,7 @@ class PostPage extends StatelessWidget {
                   ],
                 ),
                 Image(
-                  image: NetworkImage(post.urls?['full']),
+                  image: NetworkImage(post.urls['full']),
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),

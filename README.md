@@ -1,16 +1,14 @@
-# flutter_gallery_unsplash
+# Mobile application that shows photos for users
+What was implemented:
 
-A new Flutter project.
+1. Two screens, first is a list of photos. By clicking on the photo, you can go to another screen with detailed information
+2. Show the user loading content
+3. Pagination
 
-## Getting Started
+Technology stack:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. DART
+2. FLUTTER
+3. State manager bloc
+4. http
+5. Google fonts

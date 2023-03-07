@@ -32,10 +32,10 @@ class _PostsListState extends State<PostsList> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color(0xFF1B1934),
-                Color(0xFF181A20),
-                Color(0xFF1B1934)
-              ])),
+            Color(0xFF1B1934),
+            Color(0xFF181A20),
+            Color(0xFF1B1934)
+          ])),
       child: BlocBuilder<PostBloc, PostState>(
         builder: (context, state) {
           switch (state.status) {

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import '../models/post.dart';
 
-enum PostStatus {initial, success, failure}
+enum PostStatus { initial, success, failure }
 
 class PostState extends Equatable {
   const PostState({
